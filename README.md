@@ -1,8 +1,7 @@
 # 📱 crDroid OTA Updates for Redmi 12 4G (fire)
 
-[![ROM Version](https://shields.io)](https://github.com)
-[![Device Code](https://shields.io)](https://github.com)
-[![Hosting](https://shields.io)](https://sourceforge.net)
+[![GitHub Repo stars](https://img.shields.io/github/stars/GADGETN1K/crdroid_ota_update_rebase?style=flat-square)](https://github.com/GADGETN1K/crdroid_ota_update_rebase)
+[![SourceForge Downloads](https://img.shields.io/sourceforge/dt/crdroid-unoff-releases?style=flat-square)](https://sourceforge.net/projects/crdroid-unoff-releases/files/)
 
 This repository hosts the official configuration JSON metadata files for the built-in **crDroid OTA Updater** application. It serves system update configs for the **Redmi 12 4G (`fire` / `fire_in`)** running custom crDroid distributions.
 
@@ -14,13 +13,12 @@ All files are dynamically managed by automated build-server scripts and uploaded
 
 Depending on your target region (Global vs. India) and build stability (Stable vs. Testing), the system updater client fetches different endpoints directly from the root of the `fire_12.x` tracking branch:
 
-
 | Build Type | Region | Configuration Endpoint (JSON) | SourceForge File Mirror Path |
 | :--- | :--- | :--- | :--- |
-| 🟢 **Stable** | 🌍 Global | [`fire.json`](./fire.json) | [/12.x/fire/](https://sourceforge.netfiles/12.x/fire/) |
-| 🟢 **Stable** | 🇮🇳 India | [`fire_in.json`](./fire_in.json) | [/12.x/fire/](https://sourceforge.netfiles/12.x/fire/) |
-| 🟡 **Testing** | 🌍 Global | [`testing/fire.json`](./testing/fire.json) | [/12.x/fire/testing/](https://sourceforge.netfiles/12.x/fire/testing/) |
-| 🟡 **Testing** | 🇮🇳 India | [`testing/fire_in.json`](./testing/fire_in.json) | [/12.x/fire/testing/](https://sourceforge.netfiles/12.x/fire/testing/) |
+| 🟢 **Stable** | 🌍 Global | [`fire.json`](./fire.json) | [/12.x/fire/](https://sourceforge.net/projects/crdroid-unoff-releases/files/12.x/fire/) |
+| 🟢 **Stable** | 🇮🇳 India | [`fire_in.json`](./fire_in.json) | [/12.x/fire/](https://sourceforge.net/projects/crdroid-unoff-releases/files/12.x/fire/) |
+| 🟡 **Testing** | 🌍 Global | [`testing/fire.json`](./testing/fire.json) | [/12.x/fire/testing/](https://sourceforge.net/projects/crdroid-unoff-releases/files/12.x/fire/testing/) |
+| 🟡 **Testing** | 🇮🇳 India | [`testing/fire_in.json`](./testing/fire_in.json) | [/12.x/fire/testing/](https://sourceforge.net/projects/crdroid-unoff-releases/files/12.x/fire/testing/) |
 
 ---
 
@@ -30,33 +28,10 @@ To route the built-in OTA app to this configuration hub, define the update URI v
 
 ```make
 # Dynamic regional routing for custom OTA server endpoints
-ifeq (\$(TARGET_REGION),india)
+ifeq ($(TARGET_REGION),india)
     PRODUCT_PROPERTY_OVERRIDES += \
-        lineage.updater.uri=https://githubusercontent.com
+        lineage.updater.uri=[https://raw.githubusercontent.com/GADGETN1K/crdroid_ota_update_rebase/fire_12.x/fire_in.json](https://raw.githubusercontent.com/GADGETN1K/crdroid_ota_update_rebase/fire_12.x/fire_in.json)
 else
     PRODUCT_PROPERTY_OVERRIDES += \
-        lineage.updater.uri=https://githubusercontent.com
+        lineage.updater.uri=[https://raw.githubusercontent.com/GADGETN1K/crdroid_ota_update_rebase/fire_12.x/fire.json](https://raw.githubusercontent.com/GADGETN1K/crdroid_ota_update_rebase/fire_12.x/fire.json)
 endif
-```
-*(Note: For compiling explicit Experimental/Testing builds, remember to append the `/testing/` directory segment to the corresponding network string).*
-
----
-
-## 🤖 Server Automation & Artifact Naming
-
-The compilation post-processor pipeline (`createjson.sh`) manages checksum generation (MD5/SHA256), extracts build properties on-the-fly, and mirrors both ROM flashes and specific time-stamped recovery kernels using the following structure:
-
-### Remote File Naming Convention (SourceForge):
-* **Global Release ZIP:** `crDroidAndroid-16.0-YYYYMMDD_HHMMSS-fire-vXXXX.zip`
-* **Global Recovery Image:** `recovery_YYYYMMDD_HHMMSS.img`
-* **India Release ZIP:** `crDroidAndroid-16.0-YYYYMMDD_HHMMSS-fire_in-vXXXX.zip`
-* **India Recovery Image:** `recovery_YYYYMMDD_HHMMSS_in.img`
-
----
-
-## 👥 Core Maintainers & Support Channels
-
-* **Lead Project Maintainer:** GADGETNiK (WolfAURman Team)
-* **Telegram Support Hub:** [@GADGETNiK](https://t.me/@GADGETNiK)
-* **SourceForge Mirror Platform:** [crdroid-unoff-releases](https://sourceforge.net/crdroid-unoff-releases)
-
