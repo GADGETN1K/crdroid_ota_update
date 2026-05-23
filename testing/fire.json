@@ -1,0 +1,28 @@
+{
+  "response": [
+    {
+      "maintainer": "GADGETNiK (WolfAURman Team)",
+      "oem": "Xiaomi",
+      "device": "fire",
+      "filename": "crDroidAndroid-16.0-20260523_082347-fire-v12.10.zip",
+      "download": "https://sourceforge.net/projects/crdroid-unoff-releases/files/12.x/fire/testing/crDroidAndroid-16.0-20260523_082347-fire-v12.10.zip/download",
+      "timestamp": 1779524627,
+      "md5": "1c4f8259f576feb5aa72571270ef8af2",
+      "sha256": "c9881f396215df63253c5442a6aff1218478ea769d8a327aaca84931e86ba1c1",
+      "size": 1345111393,
+      "version": "16.0",
+      "buildtype": "Testing",
+      "forum": "",
+      "gapps": "",
+      "firmware": "",
+      "modem": "",
+      "bootloader": "",
+      "recovery": "https://sourceforge.net/projects/crdroid-unoff-releases/files/12.x/fire/testing/recovery_20260523_082347.img/download",
+      "paypal": "",
+      "telegram": "https://t.me",
+      "dt": "",
+      "common-dt": "",
+      "kernel": ""
+    }
+  ]
+}
